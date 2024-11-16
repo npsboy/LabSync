@@ -1,9 +1,17 @@
 import shutil
+import sys
 import os
 import glob
 import re
 import tkinter as tk
 from tkinter import messagebox, filedialog, simpledialog
+
+# Get the directory where the script is located
+script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
+
+# Change the working directory to the script directory
+os.chdir(script_dir)
+
 
 hardcode_path = lambda i: fr"C:\Users\Tusha\OneDrive\Documents\Test_{i}\d"
 
@@ -26,7 +34,7 @@ def copy_files(source, start, end, dest_folder):
         return
 
     for i in range(start, end + 1):
-        destination_path = rf"C:\Users\Tusha\OneDrive\Documents\Test_{i}\d{dest_folder}"
+        destination_path = hardcode_path(i) + dest_folder
         print('destination path = ', destination_path)
         if not os.path.exists(destination_path):
             missing_destinations.append(i)
@@ -111,9 +119,9 @@ def delete_files(unwanted_file, start, end):
     for i in range(start, end + 1):
         if len(parts) > 1:
             unwanted_file = parts[1]
-            delete_path = rf"C:\Users\Tusha\OneDrive\Documents\Test_{i}\d{unwanted_file}"
+            delete_path = hardcode_path(i) + unwanted_file
         else:
-           delete_path = rf"C:\Users\Tusha\OneDrive\Documents\Test_{i}\d" 
+           delete_path = hardcode_path(i)
         if not os.path.exists(delete_path):
             missing_destinations.append(i)
         else:
@@ -161,9 +169,10 @@ def delete_file_type(directory_path, file_extension, start, end):
     print("parts = ", parts)
     for i in range(start, end+1):  # Adjust range if you have more or fewer folders
         if len(parts) > 1:
-            folder_path = rf"C:\Users\Tusha\OneDrive\Documents\Test_{i}\d{parts[1]}"
+            
+            folder_path = hardcode_path(i) + parts[1]
         else:
-            folder_path = rf"C:\Users\Tusha\OneDrive\Documents\Test_{i}\d"
+            folder_path = hardcode_path(i)
         # Check if folder exists
         if os.path.isdir(folder_path):
             # Find all files with the given extension in the folder
@@ -217,9 +226,9 @@ def backup_files(directory_path, file_extension, destination_path, start, end):
     print("parts = ", parts)
     for i in range(start, end+1):  # Adjust range if you have more or fewer folders
         if len(parts) > 1:
-            folder_path = rf"C:\Users\Tusha\OneDrive\Documents\Test_{i}\d{parts[1]}"
+            folder_path = hardcode_path(i) + parts[1]
         else:
-            folder_path = rf"C:\Users\Tusha\OneDrive\Documents\Test_{i}\d"
+            folder_path = hardcode_path(i)
 
         # Check if folder exists
         if os.path.isdir(folder_path):
@@ -553,7 +562,7 @@ def show_screen(action):
 
 # Initialize the main application window
 root = tk.Tk()
-root.title("File Management Tool")
+root.title("NPS LabSync")
 root.geometry("600x550")
 root.configure(bg="#2c3e50")
 
@@ -575,6 +584,9 @@ for text, action in actions:
     button = tk.Button(main_frame, text=text, font=("Helvetica", 12), bg="#3498db", fg="white",
                        command=lambda a=action: show_screen(a), highlightthickness=0, borderwidth=0)
     button.pack(pady=10, padx=20, fill='x')
+
+
+root.iconbitmap(bitmap=rf"C:\Users\Tusha\OneDrive\Documents\LabSync\app_icon.ico")
 
 # Start the application
 root.mainloop()
