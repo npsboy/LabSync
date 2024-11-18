@@ -9,7 +9,7 @@ It can:
 # How to use it?
 1. Download the repo as a Zip file
 2. Unzip the file
-3. Double-click on the 'install_requirements.bat' This will run a batch script that will install all necessary Python libraries for the program.
+3. Double-click on the 'install_requirements.bat' This will run a batch script that will install all necessary Python libraries for the program mentioned in 'requirements.txt'
 4. Open the 'LabSync.pyw' file in a text editor
 5. Replace line 16
     `hardcode_path = lambda i: fr"your_computer_{i}\d"`
