@@ -21,7 +21,7 @@ script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
 os.chdir(script_dir)
 
 
-hardcode_path = lambda i: fr"C:\Users\Tusha\OneDrive\Documents\Test_{i}\d" #change this
+hardcode_path = lambda i: fr"path_to_any_one_computer_Computer_{i}\d" #change this
 
 
 
@@ -747,7 +747,7 @@ text_label = tk.Label(banner_frame, text="Made by @npsboy", font=("Helvetica", 1
 text_label.pack(side="left", padx=10)
 
 
-root.iconbitmap(bitmap=rf"C:\Users\Tusha\OneDrive\Documents\LabSync\app_icon.ico")
+root.iconbitmap(bitmap=rf"app_icon.ico")
 
 # Start the application
 root.mainloop()
