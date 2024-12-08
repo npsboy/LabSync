@@ -740,10 +740,10 @@ banner_image = PhotoImage(master=root, file="@npsboy_logo.png")  # Replace with 
 
 # Create a label for the image inside the banner frame
 image_label = tk.Label(banner_frame, image=banner_image, bg="white")
-image_label.pack(side="left", padx=(200,10) )  # `side="left"` places it on the left
+image_label.pack(side="left", padx=(250,10) )  # `side="left"` places it on the left
 
 # Create a label for the text inside the banner frame
-text_label = tk.Label(banner_frame, text="Made by @npsboy : Tushar V", font=("Helvetica", 14), fg="black", bg="white")
+text_label = tk.Label(banner_frame, text="Made by @npsboy", font=("Helvetica", 14), fg="black", bg="white")
 text_label.pack(side="left", padx=10)
 
 
